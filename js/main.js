@@ -8,19 +8,64 @@
   //    Please console.log the average.
 
   var allPrices = items.map(function(item){
-    return item.price; // return the avg
+    return item.price; // store all the item prices
   });
 
   var sumPrice = allPrices.reduce(function(prev, current){
-    return prev + current;
+    return prev + current; // store the sum of all prices
   });
 
-  var avgPrice = sumPrice / allPrices.length;
+  var avgPrice = (sumPrice / allPrices.length).toFixed(2);
 
   // console.log(allPrices);
-  console.log('The average price is', avgPrice);
+  console.log('The average price is $' + avgPrice);
 
   // ###########################################################
+
+  // ###########################################################
+  // 2. Show me how to get an array of items that cost between
+  //    $14.00 and $18.00 USD
+
+    var priceRange = items.filter(function(item){
+      if ((item.price > 14) && (item.price < 18) && (item.currency_code == 'USD')){
+        return item;
+      }
+    });
+
+    console.log("The items that cost between $14 and $18 USD are ", priceRange);
+
+
+  // ###########################################################
+  // 3. Show me how find the item with a "GBP" currency code and
+  //    print its name and price. Please console.log the one you find.
+
+
+  // ###########################################################
+
+
+  // ###########################################################
+  // 4. Show me how to find which items are made of wood. Please
+  //    console.log the ones you find.
+
+
+  // ###########################################################
+
+
+  // ###########################################################
+  // 5. Show me how to find which items are made of eight or more
+  //    materials. Please console.log the ones you find.
+
+
+  // ###########################################################
+
+
+  // ###########################################################
+  // 6. Show me how to calculate how many items were made by their
+  //    sellers 18 were made by their sellers
+
+
+  // ###########################################################
+
 
 }());
 
