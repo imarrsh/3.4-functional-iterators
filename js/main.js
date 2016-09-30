@@ -27,9 +27,7 @@
   //    $14.00 and $18.00 USD
 
     var priceRange = items.filter(function(item){
-      if ((item.price > 14) && (item.price < 18) && (item.currency_code == 'USD')){
-        return item;
-      }
+        return item.price > 14 && item.price < 18 && item.currency_code == 'USD';
     });
 
     console.log("The items that cost between $14 and $18 USD are ", priceRange);
@@ -39,6 +37,19 @@
   // 3. Show me how find the item with a "GBP" currency code and
   //    print its name and price. Please console.log the one you find.
 
+    // var britProducts = items.filter(function(item){
+    //   return item.currency_code == 'GBP';
+    // }).map(function(item){
+    //   return item.title + ' £' + item.price;
+    // });
+
+    var britProduct = items.filter(function(item){
+      return item.currency_code == 'GBP';
+    }).forEach(function(item){
+      console.log(item.title, '£' + item.price);
+    });
+
+    // console.log(britProduct[0].title, '£' + britProduct[0].price);
 
   // ###########################################################
 
@@ -47,6 +58,12 @@
   // 4. Show me how to find which items are made of wood. Please
   //    console.log the ones you find.
 
+    var materialsWithWood = items.filter(function(item){
+      // need to search materials for wood
+      return item.materials.indexOf('wood') !== -1;
+    }).forEach(function(item){
+      console.log(item.title);
+    });
 
   // ###########################################################
 
@@ -55,17 +72,33 @@
   // 5. Show me how to find which items are made of eight or more
   //    materials. Please console.log the ones you find.
 
+  var eightOrMoreMaterials = items.filter(function(item){
+    return item.materials.length >= 8;
+  }).forEach(function(item){
+    console.log(item.title, item.materials);
+  });
 
   // ###########################################################
 
 
   // ###########################################################
   // 6. Show me how to calculate how many items were made by their
-  //    sellers 18 were made by their sellers
+  //    sellers
 
+  var madeBySeller = items.filter(function(item, i, array){
+    return item.who_made === 'i_did';
+  });
+
+  console.log(madeBySeller.length + ' were made by their sellers');
 
   // ###########################################################
 
+
+
+  // just playing around with some es6 syntax - works in chrome
+  // var britProducts = items
+  //   .filter(item => item.currency_code == 'GBP')
+  //   .map(item => item.title + item.price);
 
 }());
 
